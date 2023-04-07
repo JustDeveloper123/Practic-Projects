@@ -1,0 +1,15 @@
+.console {
+    margin-top: 50px;
+    width: 100%;
+    height: 400px;
+    padding: 20px 15px;
+    border: 5px solid $white;
+    line-height: 1.5;
+    overflow: auto;
+    .console-row {
+        &::before {
+            content: '>> ';
+            font-size: 1em;
+        }
+    }
+}

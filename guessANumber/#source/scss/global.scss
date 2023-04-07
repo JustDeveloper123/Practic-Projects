@@ -1,0 +1,44 @@
+body,
+html {
+    font-weight: 400;
+    font-size: 16px;
+    color: $white;
+    background-color: $black;
+    line-height: 1;
+
+    * {
+        font-family: $font-Minecraft, sans-serif;
+        letter-spacing: 2px;
+    }
+}
+body {
+    &._game-over::before {
+        content: '';
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+        background-color: rgba(0, 0, 0, .4);
+    }
+}
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+._container {
+    max-width: $cont-w-sum;
+    width: 100%;
+    padding: 0 $cont-x-p;
+    margin: 0 auto;
+}
+.default-btn {
+    color: $black;
+    background-color: $white;
+    cursor: pointer;
+    &:hover {
+        filter: brightness(.85);
+    }
+}

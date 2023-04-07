@@ -1,0 +1,15 @@
+// Fonts
+$font-Minecraft: 'Minecraft';
+
+// Container
+$cont-w: 1200px; // Container width
+$cont-x-p: 20px; // Container padding
+$cont-w-sum: calc($cont-w + ($cont-x-p * 2)); // Container sum width
+
+// Sizes
+$size-cont: 1200;
+$size-mobile: 320;
+
+// Colors
+$white: #fff;
+$black: #000;

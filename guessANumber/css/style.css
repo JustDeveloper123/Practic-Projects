@@ -1,0 +1,295 @@
+@font-face {
+  font-family: "Minecraft";
+  src: url("../../fonts/Minecraft.ttf");
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+body,
+html {
+  min-height: 100vh;
+}
+
+body,
+html {
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  background-color: #000;
+  line-height: 1;
+}
+body *,
+html * {
+  font-family: "Minecraft", sans-serif;
+  letter-spacing: 2px;
+}
+
+body._game-over::before {
+  content: "";
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+._container {
+  max-width: 1240px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.default-btn {
+  color: #000;
+  background-color: #fff;
+  cursor: pointer;
+}
+.default-btn:hover {
+  -webkit-filter: brightness(0.85);
+          filter: brightness(0.85);
+}
+
+.top-part {
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.top-part .start-over {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  padding: 12px 25px 8px;
+  font-size: 20px;
+  z-index: 20;
+}
+@media (max-width: 1200px) {
+  .top-part .start-over {
+    font-size: 20px;
+  }
+}
+@media (max-width: 1200px) and (max-width: 1200px) {
+  .top-part .start-over {
+    font-size: calc((15px) + 5 * (100vw - 320px) / 880);
+  }
+}
+@media (max-width: 350px) {
+  .top-part .start-over {
+    width: 100vw;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+.top-part .between-nums {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+  font-size: 20px;
+}
+@media (max-width: 1200px) {
+  .top-part .between-nums {
+    font-size: 20px;
+  }
+}
+@media (max-width: 1200px) and (max-width: 1200px) {
+  .top-part .between-nums {
+    font-size: calc((15px) + 5 * (100vw - 320px) / 880);
+  }
+}
+@media (max-width: 350px) {
+  .top-part .between-nums {
+    top: 80px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+    white-space: nowrap;
+  }
+}
+.top-part .secret-num {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 18px 25px 16px;
+  width: 150px;
+  text-align: center;
+  color: #000;
+  background-color: #fff;
+  position: relative;
+  z-index: 0;
+}
+.top-part .secret-num::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  min-width: 100vw;
+  height: 5px;
+  background-color: white;
+  z-index: -1;
+}
+
+.bottom-part {
+  margin-top: 50px;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 30px 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  -webkit-column-gap: 30px;
+     -moz-column-gap: 30px;
+          column-gap: 30px;
+}
+@media (max-width: 500px) {
+  .bottom-part {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    row-gap: 30px;
+    text-align: center;
+  }
+}
+@media (max-width: 1200px) {
+  .bottom-part {
+    -webkit-column-gap: 30px;
+       -moz-column-gap: 30px;
+            column-gap: 30px;
+  }
+}
+@media (max-width: 1200px) and (max-width: 1200px) {
+  .bottom-part {
+    -webkit-column-gap: calc((15px) + 15 * (100vw - 320px) / 880);
+       -moz-column-gap: calc((15px) + 15 * (100vw - 320px) / 880);
+            column-gap: calc((15px) + 15 * (100vw - 320px) / 880);
+  }
+}
+.bottom-part .bottom-left-part {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.bottom-part .bottom-left-part .input {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #000;
+  border: 5px solid #fff;
+  max-width: 150px;
+  padding: 20px 5px 16px;
+}
+.bottom-part .bottom-left-part .input:disabled {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+.bottom-part .bottom-left-part .check-input {
+  padding: 12px 50px 8px;
+  font-size: 20px;
+}
+.bottom-part .bottom-left-part .check-input:disabled {
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
+  cursor: default;
+}
+.bottom-part .bottom-right-part {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 10px;
+  font-size: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.bottom-part .bottom-right-part .text-result.red {
+  color: red;
+}
+.bottom-part .bottom-right-part .text-result.green {
+  color: lawngreen;
+}
+
+.console {
+  margin-top: 50px;
+  width: 100%;
+  height: 400px;
+  padding: 20px 15px;
+  border: 5px solid #fff;
+  line-height: 1.5;
+  overflow: auto;
+}
+.console .console-row::before {
+  content: ">> ";
+  font-size: 1em;
+}
+/*# sourceMappingURL=style.css.map */
