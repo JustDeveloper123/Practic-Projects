@@ -1,0 +1,19 @@
+// Fonts
+$font-appFont: 'Play';
+
+// Sizes
+$size-containerWidth: 960;
+$size-containerPaddingWidth: 20;
+$size-containerWidthSum: calc($size-containerWidth + ($size-containerPaddingWidth * 2));
+$size-mobileWidth: 320;
+
+// Breakpoints
+$containerWidth: #{$size-containerWidth}px; // Container width
+$containerPaddingWidth: #{$size-containerPaddingWidth}px; // Container padding
+$containerWidthSum: calc($containerWidth + ($containerPaddingWidth * 2)); // Container sum width
+$mobileWidth: #{$size-mobileWidth}px;
+
+// Colors
+$white: #fff;
+$black: #000;
+$orange: #ee7d05;
