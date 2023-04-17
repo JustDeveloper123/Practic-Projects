@@ -41,7 +41,7 @@ let gameInfo = {
     playersScore: [0, 0],
     currentPlayerScore: 0,
     activePlayer: 0,
-    finalScore: 5,
+    finalScore: 100,
     winner: false,
 };
 
