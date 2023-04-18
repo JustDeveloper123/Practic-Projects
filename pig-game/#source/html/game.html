@@ -1,5 +1,13 @@
 <div class="_container">
     <main class="game-block">
+        <div class="ending-on">
+            <div class="padding">
+                <p class="ending-on__text">Ending on...</p>
+                <input type="text" class="ending-on__input" placeholder="Default is 100">
+                <button class="ending-on__btn">Apply</button>
+            </div>
+            <p class="ending-on__num-now">Now the game ends at <span class="wrap num">100</span></p>
+        </div>
         <section class="player player-1 _active-player">
             <div class="player__info">
                 <h2 class="player__title">Player 1</h2>
@@ -20,10 +28,10 @@
                 <p class="score-block__score">0</p>
             </div>
         </section>
-        <div class="player-won-modal modal">
+        <div class="messages-modal modal">
             <div class="modal-content">
                 <span class="modal-close">&times;</span>
-                <p class="modal__winner-text">We have a winner!</p>
+                <p class="modal__text">We have a winner!</p>
             </div>
         </div>
         <div class="dice _hidden"></div>

@@ -15,13 +15,13 @@ html {
 ._container {
     max-width: $containerWidthSum;
     width: 100%;
-    --app-top-padding: 20px;
+    --app-top-padding: 225px;
     --app-bottom-padding: 20px;
     padding: var(--app-top-padding) $containerPaddingWidth var(--app-bottom-padding);
     margin: 0 auto;
 
     @media screen and (max-width: $containerWidthSum) {
-        --app-top-padding: 100px;
+        --app-top-padding: 290px;
         --app-bottom-padding: 170px;
     }
 }
