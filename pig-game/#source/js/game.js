@@ -1,4 +1,4 @@
-// Funtions
+// Functions
 const documentElementFinder = function (element, quantity = 0) {
     let foundEl;
 
