@@ -4,8 +4,7 @@ const documentElementFinder = function (element, quantity = 0) {
 
     if (quantity === 1) {
         foundEl = document.querySelectorAll(element);
-    }
-    else {
+    } else {
         foundEl = document.querySelector(element);
     }
 
@@ -52,7 +51,7 @@ let gameInfo = {
 // Game functionality
 const gameFunctionality = {
     // Initial game properties
-    initialProperties: function () {
+    initialProperties() {
         gameEls.player1Score.textContent = 0;
         gameEls.player2Score.textContent = 0;
         gameEls.player1CurrentScore.textContent = 0;
@@ -72,40 +71,61 @@ const gameFunctionality = {
     },
 
     // Open modal with text
-    openModalWithText: function (text) {
+    openModalWithText(text) {
         const modal = gameEls.messagesModal;
         const closeModalBtn = gameEls.messagesModalCloseBtn;
         const modalText = documentElementFinder('.messages-modal .modal__text');
 
         modalText.textContent = text;
 
-        modal.classList.add('_active');
-        closeModalBtn.addEventListener('click', function () {
+        function openModal() {
+            modal.classList.add('_active');
+            document.body.classList.add('_scroll-lock');
+        }
+        function closeModal() {
             modal.classList.remove('_active');
-        });
+            document.body.classList.remove('_scroll-lock');
+        }
+
+        openModal();
+
+        closeModalBtn.addEventListener('click', closeModal);
+
         // Click outside
-        const modalCanCloseTimeout = function (time) {
-            setTimeout(
-                () => {
-                    window.addEventListener('click', (e) => {
-                        if (e.target === modal) {
-                            modal.classList.remove('_active');
-                        }
-                    });
-                },
-                time
-            );
+        const modalCloseInterval = function (timeoutTime, closeTime) {
+            let timer = 0;
+            let modalCloseAllowed = false;
+
+            const closeModal = () => {
+                if (modalCloseAllowed) {
+                    gameEls.messagesModal.classList.remove('_active');
+                    gameEls.messagesModal.removeEventListener('click', closeModal);
+                }
+            }
+
+            const interval = setInterval(() => {
+                timer += timeoutTime;
+
+                if (timer >= closeTime) {
+                    clearInterval(interval);
+                    modalCloseAllowed = true;
+                }
+            }, timeoutTime);
+
+            gameEls.messagesModal.classList.add('_active');
+            gameEls.messagesModal.addEventListener('click', closeModal);
         };
-        modalCanCloseTimeout(1300);
+
+        modalCloseInterval(100, 800);
     },
 
     // Changing final score input
-    changingFinalScoreInput: function (inputEl) {
+    changingFinalScoreInput(inputEl) {
         inputEl.value = inputEl.value.replace(/\D/g, '');
     },
 
     // User changed final score
-    userChangedFinalScore: function () {
+    userChangedFinalScore() {
         const inputValue = +gameEls.inputEndingOn.value;
 
         if (
@@ -131,19 +151,19 @@ const gameFunctionality = {
     },
 
     // Random number of the dice
-    randomNumOfDice: function () {
+    randomNumOfDice() {
         return Math.trunc(Math.random() * 6) + 1;
     },
 
     // Switch player
-    switchPlayer: function () {
+    switchPlayer() {
         gameInfo.activePlayer = gameInfo.activePlayer === 0 ? 1 : 0;
 
         gameEls.player1.classList.toggle('_active-player');
         gameEls.player2.classList.toggle('_active-player');
     },
 
-    updateCurrentScore: function (number) {
+    updateCurrentScore(number) {
         gameInfo.currentPlayerScore += number;
 
         if (gameInfo.activePlayer === 0) {
@@ -154,7 +174,7 @@ const gameFunctionality = {
     },
 
     // Create dice
-    createDice: function (diceSelector) {
+    createDice(diceSelector) {
         diceSelector.classList.remove('_hidden');
 
         const randomNum = this.randomNumOfDice();
@@ -218,7 +238,7 @@ const gameFunctionality = {
     },
 
     // Hold the dice
-    holdDice: function () {
+    holdDice() {
         if (gameInfo.activePlayer === 0) {
             gameInfo.playersScore[0] += gameInfo.currentPlayerScore;
             gameEls.player1Score.textContent = gameInfo.playersScore[0];
@@ -234,32 +254,32 @@ const gameFunctionality = {
     },
 
     // Player won modal functionality
-    playerWonModalOpen: function () {
+    playerWonModalOpen() {
         this.openModalWithText(gameInfo.winner === 0 ? 'Player 1 won!' : 'Player 2 won!');
     },
 
     // Roll the dice on click
-    rollTheDiceOnClick: function (buttonEl) {
+    rollTheDiceOnClick(buttonEl) {
         buttonEl.addEventListener('click', () => this.createDice(gameEls.dice));
     },
 
     // Hold the dice on click
-    holdTheDiceOnClick: function (buttonEl) {
+    holdTheDiceOnClick(buttonEl) {
         buttonEl.addEventListener('click', () => this.holdDice());
     },
 
     // Restarting the game by pressing a button
-    restartGameOnClick: function (buttonEl) {
+    restartGameOnClick(buttonEl) {
         buttonEl.addEventListener('click', () => this.initialProperties());
     },
 
     // Click to the changing final score button
-    changeFinalScoreOnClick: function (buttonEl) {
+    changeFinalScoreOnClick(buttonEl) {
         buttonEl.addEventListener('click', () => this.userChangedFinalScore());
     },
 
     // Changing final score input
-    changingFinalScoreInputOnWrite: function (inputEl) {
+    changingFinalScoreInputOnWrite(inputEl) {
         inputEl.addEventListener('input', () => this.changingFinalScoreInput(inputEl));
     },
 };

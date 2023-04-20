@@ -11,6 +11,12 @@ html {
     background-image: linear-gradient(to top right, #e2b810 0%, #ec3b05 100%);
 }
 
+body {
+    &._scroll-lock {
+        overflow: hidden;
+    }
+}
+
 // Containers
 ._container {
     max-width: $containerWidthSum;
