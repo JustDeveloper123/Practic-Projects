@@ -96,10 +96,10 @@ const gameFunctionality = {
             let timer = 0;
             let modalCloseAllowed = false;
 
-            const closeModal = () => {
+            const close = () => {
                 if (modalCloseAllowed) {
-                    gameEls.messagesModal.classList.remove('_active');
                     gameEls.messagesModal.removeEventListener('click', closeModal);
+                    closeModal();
                 }
             }
 
@@ -113,7 +113,7 @@ const gameFunctionality = {
             }, timeoutTime);
 
             gameEls.messagesModal.classList.add('_active');
-            gameEls.messagesModal.addEventListener('click', closeModal);
+            gameEls.messagesModal.addEventListener('click', close);
         };
 
         modalCloseInterval(100, 800);
