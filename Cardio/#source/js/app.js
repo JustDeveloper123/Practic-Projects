@@ -427,7 +427,10 @@ class App {
         if (!workout) return;
 
         workout.marker.openPopup();
-        this.#map.setView(workout.coords, this.zoom + 1);
+        this.#map.flyTo(workout.coords, this.zoom + 1, {
+            animate: true,
+            duration: 1.1,
+        });
     }
 
     _deleteAllWorkouts() {
