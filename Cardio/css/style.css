@@ -84,8 +84,8 @@ html {
 
 @font-face {
   font-family: "iconFont";
-  src: url("../../fonts/iconFont.eot?x3ylrr");
-  src: url("../../fonts/iconFont.eot?x3ylrr#iefix") format("embedded-opentype"), url("../../fonts/iconFont.ttf?x3ylrr") format("truetype"), url("../../fonts/iconFont.woff?x3ylrr") format("woff"), url("../../fonts/iconFont.svg?x3ylrr#iconFont") format("svg");
+  src: url("../fonts/iconFont.eot?x3ylrr");
+  src: url("../fonts/iconFont.eot?x3ylrr#iefix") format("embedded-opentype"), url("../fonts/iconFont.ttf?x3ylrr") format("truetype"), url("../fonts/iconFont.woff?x3ylrr") format("woff"), url("../fonts/iconFont.svg?x3ylrr#iconFont") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
