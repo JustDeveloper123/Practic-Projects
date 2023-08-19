@@ -1,0 +1,47 @@
+// Initial styles
+body,
+html {
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: black;
+    background-color: white;
+    line-height: 1;
+
+    overflow: hidden;
+}
+
+// Modifications
+
+// Main wrapper
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+// Contact
+#contact-tg {
+    margin-top: 10px;
+    color: $white-1;
+    font-size: 13px;
+
+    a {
+        color: cadetblue;
+    }
+}
+
+// Global styles
+*::-webkit-scrollbar {
+    width: 10px;
+    border-top: 1px solid rgba(216, 255, 253, 0.4);
+    border-bottom: 1px solid rgba(216, 255, 253, 0.4);
+}
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: inset 4px 0 4px rgba(216, 255, 253, 0.2);
+    border-radius: 100px;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}

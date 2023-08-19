@@ -1,0 +1,667 @@
+// Fonts
+
+// Variables
+@import "variables";
+
+// Mixins
+@import "mixins";
+
+// Null style
+@import "null-style";
+
+// Global properties
+@import "global";
+
+// Icon font
+@import "iconFont";
+
+// Body
+.sidebar {
+    position: relative;
+    transition: transform 0.6s ease-in-out 0s;
+    height: 100vh;
+
+    &._hidden {
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .sidebar-el {
+        transition: all 0.6s ease 0s;
+    }
+    .sidebar--hidden-el {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .sidebar__status-switch-btn {
+        pointer-events: all;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 20;
+
+        &._hidden {
+            ._icon-arrow-left {
+                transform: rotate(-180deg);
+            }
+        }
+
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: all 0.4s ease 0s;
+        cursor: pointer;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        ._icon-arrow-left {
+            transition: all 0.7s ease 0s;
+
+            &::before {
+                display: block;
+            }
+
+            color: $white;
+            font-size: 23px;
+        }
+    }
+
+    max-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: $black-2;
+
+    width: 100%;
+    max-width: 500px;
+    min-width: 300px;
+
+    @media screen and (max-width: $pc-1280) {
+        @include resp-property(
+            max-width,
+            500,
+            300,
+            $size-pc-1280,
+            $size-tablet-768,
+            1,
+            0
+        );
+    }
+    @media screen and (max-width: $tablet-768) {
+        max-width: none;
+        position: fixed;
+        z-index: 3000;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .header {
+        text-align: center;
+        padding: 20px 40px 15px;
+        box-shadow: 0 4px 15px 8px $black-2;
+        position: relative;
+        z-index: 10;
+
+        .header__logo {
+            width: 100%;
+            max-width: 200px;
+            min-width: 100px;
+            @media screen and (max-width: $pc-1280) {
+                @include resp-property(
+                    max-width,
+                    200,
+                    150,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+            }
+        }
+        &__text {
+            margin-top: 20px;
+            color: $white-1;
+            font-size: 16px;
+
+            @media screen and (max-width: $pc-1280) {
+                @include resp-property(
+                    font-size,
+                    16,
+                    12,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+                @include resp-property(
+                    margin-top,
+                    20,
+                    10,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+            }
+        }
+    }
+
+    .workouts__actions.actions {
+        box-shadow: 0 -4px 15px 8px $black-1;
+
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        background-color: $black-1;
+        padding: 10px 0;
+
+        @media screen and (max-width: $pc-1280) {
+            @include resp-property(
+                gap,
+                15,
+                8,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+            @include resp-property(
+                padding-top,
+                10,
+                0,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+        }
+
+        .actions__tabs {
+            margin: 0 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            flex-wrap: wrap;
+            background-color: $black-2;
+            border-radius: 100px;
+
+            .actions__tab {
+                padding: 5px 10px;
+                text-align: center;
+                font-size: 19px;
+                color: $white;
+                background-color: $black-2;
+                border-radius: 100px;
+                cursor: pointer;
+                transition: all 0.5s ease 0s;
+
+                &._active-tab {
+                    background-color: $black-4;
+                }
+
+                @media screen and (max-width: $pc-1280) {
+                    @include resp-property(
+                        font-size,
+                        19,
+                        15,
+                        $size-pc-1280,
+                        $size-tablet-768,
+                        1,
+                        0
+                    );
+                }
+            }
+        }
+
+        .actions__btns {
+            padding: 0 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            @media screen and (max-width: $pc-1280) {
+                @include resp-property(
+                    gap,
+                    20,
+                    5,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+                @include resp-property(
+                    padding-left,
+                    20,
+                    5,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+                @include resp-property(
+                    padding-right,
+                    20,
+                    5,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+            }
+        }
+        .actions__btn {
+            border-radius: 15px;
+            cursor: pointer;
+
+            &.actions__delete-all-btn {
+                font-size: 18px;
+                padding: 7px 13px;
+                background-color: $black-3;
+                box-shadow: inset 0 0 0 3px $black-2;
+                color: $white;
+                transition: all 0.3s ease 0s;
+
+                &:hover {
+                    background-color: $red;
+                    box-shadow: inset 0 0 0 3px #ff606b;
+                }
+
+                @media screen and (max-width: $pc-1280) {
+                    @include resp-property(
+                        font-size,
+                        18,
+                        15,
+                        $size-pc-1280,
+                        $size-tablet-768,
+                        1,
+                        0
+                    );
+                }
+            }
+            &.actions__sort-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                padding: 1px 18px;
+                background-color: $black-3;
+                transition: all 0.3s ease 0s;
+
+                @media screen and (max-width: $pc-1280) {
+                    @include resp-property(
+                        gap,
+                        10,
+                        2,
+                        $size-pc-1280,
+                        $size-tablet-768,
+                        1,
+                        0
+                    );
+                }
+
+                &:hover {
+                    filter: brightness(1.2);
+                }
+
+                .label {
+                    font-size: 18px;
+                    color: $white;
+
+                    @media screen and (max-width: $pc-1280) {
+                        @include resp-property(
+                            font-size,
+                            18,
+                            15,
+                            $size-pc-1280,
+                            $size-tablet-768,
+                            1,
+                            0
+                        );
+                    }
+                }
+                .icon {
+                    width: 30px;
+                    height: 30px;
+                    font-size: 25px;
+                    color: $white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    .footer {
+        padding: 10px 0;
+        text-align: center;
+
+        &__copy {
+            padding: 0 40px;
+            font-size: 14px;
+            color: $grey;
+        }
+    }
+
+    .main {
+        flex: 1 1 auto;
+        overflow: hidden;
+
+        @import "workouts";
+    }
+
+    .sidebar-info.info {
+        transition: all 0.8s ease 0s;
+
+        &._hidden {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        position: absolute;
+        width: 100vh;
+        top: 50%;
+        left: 100%;
+        transform: translate(calc(-50% - 26px), -50%) rotate(-90deg);
+
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        .info__count {
+            font-size: 20px;
+            color: $grey;
+
+            .count {
+                font-weight: 700;
+                writing-mode: vertical-lr;
+            }
+            &.count--running .count {
+                color: $blue;
+            }
+            &.count--cycling .count {
+                color: $yellow;
+            }
+        }
+    }
+}
+
+.map {
+    width: 100%;
+    transition: all 0.6s ease-in-out 0s;
+    position: relative;
+    z-index: 1000;
+
+    @media screen and (max-width: $tablet-768) {
+        position: fixed;
+        height: 100vh;
+        right: 0;
+    }
+
+    .leaflet-popup {
+        &-content-wrapper {
+            background-color: #333;
+            color: $white;
+            font-size: 16px;
+            padding: 1px 3px;
+
+            border-left-width: 5px;
+            border-left-style: solid;
+
+            .leaflet-popup-content {
+                @media screen and (max-width: $pc-1280) {
+                    @include resp-property(
+                        margin-top,
+                        13,
+                        6,
+                        $size-pc-1280,
+                        $size-mobile-480,
+                        1,
+                        0
+                    );
+                    @include resp-property(
+                        margin-bottom,
+                        13,
+                        6,
+                        $size-pc-1280,
+                        $size-mobile-480,
+                        1,
+                        0
+                    );
+                    @include resp-property(
+                        margin-left,
+                        24,
+                        13,
+                        $size-pc-1280,
+                        $size-mobile-480,
+                        1,
+                        0
+                    );
+                }
+            }
+        }
+        &.workout--running {
+            .leaflet-popup-content-wrapper {
+                border-left-color: $blue;
+            }
+            .leaflet-popup-tip {
+                background-color: $blue;
+            }
+        }
+        &.workout--cycling {
+            .leaflet-popup-content-wrapper {
+                border-left-color: $yellow;
+            }
+            .leaflet-popup-tip {
+                background-color: $yellow;
+            }
+        }
+    }
+
+    //* Водяний знак карти
+    .leaflet-control-attribution {
+        display: none;
+    }
+
+    //* Маркер
+    .leaflet-marker-icon {
+        animation: markerAppearing 0.8s ease 0s;
+
+        width: 25px;
+        height: 41px;
+
+        @keyframes markerAppearing {
+            0% {
+                opacity: 0;
+                height: 41px;
+            }
+
+            60% {
+                opacity: 1;
+                height: 50px;
+            }
+            100% {
+                height: 41px;
+            }
+        }
+    }
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.animation {
+        transition: opacity 0.4s ease 0s, visibility 0.4s ease 0s;
+
+        .modal-content {
+            transition: all 0.4s ease 0s;
+        }
+    }
+
+    &._hidden {
+        opacity: 0;
+        visibility: hidden;
+
+        .modal-content {
+            transform: translateY(-100%);
+        }
+    }
+
+    &-content {
+        position: relative;
+        padding: 40px 70px;
+        background-color: $white;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $black;
+        margin: 20px 60px;
+        max-width: 60%;
+
+        @media screen and (max-width: $tablet-768) {
+            max-width: 90%;
+        }
+
+        @media screen and (max-width: $pc-1280) {
+            @include resp-property(
+                padding-left,
+                40,
+                20,
+                $size-pc-1280,
+                $size-mobile-480,
+                1,
+                0
+            );
+            @include resp-property(
+                padding-right,
+                40,
+                20,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+            @include resp-property(
+                padding-top,
+                40,
+                50,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+            @include resp-property(
+                padding-bottom,
+                40,
+                20,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+        }
+    }
+    &-close {
+        &.hidden {
+            display: none;
+        }
+
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 40px;
+        font-weight: 700;
+        color: $close-red;
+        width: 33px;
+        height: 33px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.2s ease 0s;
+
+        &:hover {
+            color: $white;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    }
+    &-text {
+        font-size: 20px;
+        font-weight: 700;
+
+        @media screen and (max-width: $pc-1280) {
+            @include resp-property(
+                font-size,
+                20,
+                18,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+        }
+    }
+    &-btn {
+        &.hidden {
+            display: none;
+        }
+
+        margin-top: 30px;
+        display: block;
+        width: 100%;
+        padding: 10px 30px;
+        font-weight: 700;
+        font-size: 25px;
+        color: $white;
+        background-color: $close-red;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.2s ease 0s;
+
+        &:hover {
+            filter: brightness(1.1);
+        }
+
+        @media screen and (max-width: $pc-1280) {
+            @include resp-property(
+                font-size,
+                25,
+                15,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+        }
+    }
+}

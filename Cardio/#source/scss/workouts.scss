@@ -1,0 +1,573 @@
+.workouts {
+    padding: 20px 0 0;
+    height: 100%;
+    position: relative;
+    overflow-y: auto;
+
+    //Todo: Form
+    .workouts__form.form {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 10px 30px;
+        z-index: 15;
+
+        @media screen and (max-width: $pc-1280) {
+            @include resp-property(
+                padding-left,
+                30,
+                8,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+            @include resp-property(
+                padding-right,
+                30,
+                8,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+            @include resp-property(
+                padding-top,
+                10,
+                20,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+        }
+
+        transition: all 0.5s ease 0s, max-height 1s;
+        opacity: 1;
+        max-height: 100%;
+        margin: 0 10px;
+        border-radius: 10px;
+
+        --error-anim-duration: 1.2s;
+
+        &._error-anim {
+            animation: error-shake var(--error-anim-duration) ease 0s;
+        }
+        &._error-anim-1 {
+            animation: error-shake-1 var(--error-anim-duration) ease 0s;
+        }
+        @keyframes error-shake {
+            15% {
+                transform: rotate(0.5deg);
+            }
+            30% {
+                transform: rotate(-0.5deg);
+            }
+            40% {
+                transform: rotate(0.5deg);
+            }
+            55% {
+                transform: rotate(-0.5deg);
+            }
+            70% {
+                transform: rotate(-0.5deg);
+            }
+            85% {
+                transform: rotate(-0.5deg);
+            }
+            100% {
+                transform: none;
+            }
+        }
+        @keyframes error-shake-1 {
+            15% {
+                transform: rotate(0.5deg);
+            }
+            30% {
+                transform: rotate(-0.5deg);
+                box-shadow: 0 0 0 2px $close-red;
+            }
+            40% {
+                transform: rotate(0.5deg);
+            }
+            55% {
+                transform: rotate(-1.5deg);
+            }
+            70% {
+                box-shadow: none;
+                transform: rotate(1.5deg);
+            }
+            85% {
+                transform: rotate(-0.5deg);
+            }
+            100% {
+                transform: none;
+            }
+        }
+
+        &._hidden {
+            pointer-events: none;
+            transform: translateY(-2rem);
+            visibility: hidden;
+            opacity: 0;
+            max-height: 0;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 10px;
+        row-gap: 12px;
+
+        .form__remove-form-btn {
+            position: absolute;
+            right: 0;
+            top: -15px;
+
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            background-color: rgb(134, 134, 134);
+            border-bottom: 2px rgb(122, 0, 0) solid;
+            font-size: 25px;
+            font-weight: 600;
+            color: $white;
+            transition: all 0.3s ease 0s;
+
+            &:hover {
+                background-color: $close-red;
+            }
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form__cell {
+            &._hidden {
+                display: none;
+            }
+        }
+        .form__description {
+            color: $white;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            @media screen and (max-width: $pc-1280) {
+                @include resp-property(
+                    font-size,
+                    14,
+                    13,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+                letter-spacing: 0;
+            }
+        }
+        .form__input {
+            margin-top: 8px;
+            width: 100%;
+            font-size: 18px;
+            padding: 3px 10px;
+
+            @media screen and (max-width: $pc-1280) {
+                @include resp-property(
+                    margin-top,
+                    8,
+                    3,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+                @include resp-property(
+                    font-size,
+                    18,
+                    15,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+                @include resp-property(
+                    padding-left,
+                    10,
+                    5,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+                @include resp-property(
+                    padding-right,
+                    10,
+                    5,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+
+            &._error-anim {
+                animation: error-drag var(--error-anim-duration) ease 0s;
+            }
+            @keyframes error-drag {
+                25% {
+                    transform: translateX(-7px);
+                    box-shadow: inset 0 0 0 3px rgba(255, 0, 0, 0.596);
+                }
+                50% {
+                    transform: translateX(7px);
+                }
+                75% {
+                    transform: translateX(-7px);
+                }
+                100% {
+                    transform: translateX(0);
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    .tab {
+        &._active-tab {
+            pointer-events: all;
+            max-height: initial;
+
+            &.workouts__items {
+                padding: 0 30px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+
+                @media screen and (max-width: $pc-1280) {
+                    @include resp-property(
+                        padding-left,
+                        30,
+                        12,
+                        $size-pc-1280,
+                        $size-tablet-768,
+                        1,
+                        0
+                    );
+                    @include resp-property(
+                        padding-right,
+                        30,
+                        12,
+                        $size-pc-1280,
+                        $size-tablet-768,
+                        1,
+                        0
+                    );
+                }
+
+                &._remove-padding {
+                    padding-top: 0;
+                }
+            }
+            &.workouts__stats {
+                padding-bottom: 20px;
+            }
+        }
+        pointer-events: none;
+        max-height: 0;
+        overflow-y: auto;
+
+        &.workouts__items {
+            padding: 0;
+        }
+    }
+
+    //Todo: Workouts
+    .workouts__items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+        overflow: hidden;
+
+        @media screen and (max-width: $pc-1280) {
+            @include resp-property(
+                row-gap,
+                20,
+                12,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+        }
+
+        .workout__item.item {
+            position: relative;
+            transition: all 0.4s ease 0s;
+
+            .item__delete-workout {
+                cursor: pointer;
+                overflow: hidden;
+
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 25px;
+                height: 25px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 35px;
+
+                span {
+                    position: relative;
+                    z-index: 1;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    z-index: 0;
+
+                    width: 100%;
+                    height: 0%;
+                    background-color: $close-red;
+                    transition: all 0.4s ease-out 0s;
+                }
+                &:hover::before {
+                    height: 100%;
+                }
+            }
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.23);
+                transform: translateX(6px);
+            }
+
+            @keyframes workoutAppearing {
+                from {
+                    pointer-events: none;
+                    transform: translateY(-10rem);
+                    opacity: 0;
+                }
+                to {
+                    pointer-events: none;
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            animation: workoutAppearing 0.5s ease 0s;
+
+            &.deleting-animation {
+                animation: deletingAnimation 1s ease 0s;
+                pointer-events: none;
+            }
+            @keyframes deletingAnimation {
+                25% {
+                    transform: translateX(30px);
+                    opacity: 100%;
+                }
+                100% {
+                    opacity: 0%;
+                    transform: translateX(-100%);
+                }
+            }
+
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px 20px 15px 30px;
+            color: $white;
+            border-left-width: 5px;
+            border-left-style: solid;
+
+            @media screen and (max-width: $pc-1280) {
+                @include resp-property(
+                    padding-left,
+                    15,
+                    30,
+                    $size-pc-1280,
+                    $size-tablet-768,
+                    1,
+                    0
+                );
+            }
+
+            &.workout--running {
+                border-left-color: $blue;
+                &:hover {
+                    box-shadow: -10px 0 15px -6px $blue;
+                }
+
+                .item__description {
+                    color: $blue;
+                }
+            }
+            &.workout--cycling {
+                border-left-color: $yellow;
+                &:hover {
+                    box-shadow: -10px 0 15px -6px $yellow;
+                }
+
+                .item__description {
+                    color: $yellow;
+                }
+            }
+
+            .item__name {
+                font-weight: 700;
+                font-size: 20px;
+
+                @media screen and (max-width: $pc-1280) {
+                    @include resp-property(
+                        font-size,
+                        20,
+                        15,
+                        $size-pc-1280,
+                        $size-tablet-768,
+                        1,
+                        0
+                    );
+                }
+            }
+
+            .item__cells {
+                margin-top: 10px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 10px;
+
+                .item__cell {
+                    .item__description {
+                        font-weight: 700;
+
+                        @media screen and (max-width: $pc-1280) {
+                            @include resp-property(
+                                font-size,
+                                16,
+                                13,
+                                $size-pc-1280,
+                                $size-tablet-768,
+                                1,
+                                0
+                            );
+                            font-weight: 600;
+                        }
+                    }
+                    .item__value {
+                        margin-top: 5px;
+
+                        .unit {
+                            color: rgb(194, 194, 194);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .workouts__stats {
+        display: flex;
+        flex-direction: column;
+
+        .stats__row {
+            display: flex;
+            gap: 8px;
+            padding: 10px 20px;
+            justify-content: space-between;
+
+            .stats__label {
+                font-size: 18px;
+                color: $white-2;
+
+                @media screen and (max-width: $pc-1280) {
+                    @include resp-property(
+                        font-size,
+                        18,
+                        15,
+                        $size-pc-1280,
+                        $size-tablet-768,
+                        1,
+                        0
+                    );
+                }
+            }
+            .stats__value {
+                color: $green;
+                font-size: 19px;
+
+                .value {
+                    font-weight: 700;
+
+                    @media screen and (max-width: $pc-1280) {
+                        @include resp-property(
+                            font-size,
+                            16,
+                            15,
+                            $size-pc-1280,
+                            $size-tablet-768,
+                            1,
+                            0
+                        );
+                    }
+                    font-weight: 600;
+                }
+                .unit {
+                    color: $grey;
+                    font-size: 17px;
+
+                    @media screen and (max-width: $pc-1280) {
+                        @include resp-property(
+                            font-size,
+                            17,
+                            14,
+                            $size-pc-1280,
+                            $size-tablet-768,
+                            1,
+                            0
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    &__empty-message {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        padding: 0 30px;
+        line-height: 30px;
+        font-size: 24px;
+        color: $blue;
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.4s ease 0s;
+
+        transform: translate(-50%, -50%);
+
+        &._hidden {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        @media screen and (max-width: $pc-1280) {
+            @include resp-property(
+                font-size,
+                24,
+                18,
+                $size-pc-1280,
+                $size-tablet-768,
+                1,
+                0
+            );
+        }
+    }
+}

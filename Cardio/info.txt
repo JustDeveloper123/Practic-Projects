@@ -1,0 +1,84 @@
+WORKOUT CLASSES:
+
+FIND pace = duration / distance
+// min/km
+
+FIND speed = distance / duration / 60
+// km/h
+
+
+
+WORKOUTS EXAMPLE:
+
+<!--Todo: Треніровки -->
+<section class="workouts__items">
+    <!--Todo: Зразок треніровки  -->
+    <!--! Айдішник та тип треніровки для стилів -->
+    <div class="workout__item item workout--running" data-id="g45x82g2">
+	<div class="item__delete-workout">
+            <span>&times;</span>
+        </div>
+
+        <h3 class="item__name">Пробіжка <span>16.07.2023</span></h3>
+
+        <main class="item__cells">
+            <div class="item__cell">
+                <p class="item__description">Дистанція</p>
+                <p class="item__value">123 <span class="unit">км</span></p>
+            </div>
+
+            <div class="item__cell">
+                <p class="item__description">Час</p>
+                <p class="item__value">123 <span class="unit">хв</span></p>
+            </div>
+
+            <div class="item__cell">
+                <p class="item__description">К-ть кілометрів за хв</p>
+                <!--! Тут розраховуємо pace -->
+                <p class="item__value">
+                    123 <span class="unit">хв/м</span>
+                </p>
+            </div>
+
+            <div class="item__cell">
+                <p class="item__description">Темп</p>
+                <p class="item__value">
+                    123 <span class="unit">крок/хв</span>
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <div class="workout__item item workout--cycling" data-id="g45x82g2">
+	<div class="item__delete-workout">
+            <span>&times;</span>
+        </div>
+
+        <h3 class="item__name">Велоїзда <span>16.07.2023</span></h3>
+
+        <main class="item__cells">
+            <div class="item__cell">
+                <p class="item__description">Дистанція</p>
+                <p class="item__value">123 <span class="unit">км</span></p>
+            </div>
+
+            <div class="item__cell">
+                <p class="item__description">Час</p>
+                <p class="item__value">123 <span class="unit">хв</span></p>
+            </div>
+
+            <div class="item__cell">
+                <p class="item__description">Швидкість</p>
+                <!--! Тут розраховуємо speed -->
+                <p class="item__value">
+                    123 <span class="unit">км/г</span>
+                </p>
+            </div>
+
+            <div class="item__cell">
+                <p class="item__description">Висота</p>
+                <p class="item__value">123 <span class="unit">м</span></p>
+            </div>
+        </main>
+    </div>
+</section>

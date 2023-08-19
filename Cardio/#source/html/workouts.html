@@ -1,0 +1,86 @@
+<section class="workouts">
+    <form class="workouts__form form _hidden">
+        <div class="form__remove-form-btn" id="remove-form-btn">&times;</div>
+
+        <div class="form__cell">
+            <label class="form__description">Тип</label>
+            <select name="type" class="form__input" id="form__type">
+                <option value="running">Пробіжка</option>
+                <option value="cycling">Велоїзда</option>
+            </select>
+        </div>
+
+        <div class="form__cell">
+            <label class="form__description">Дистанція (км)</label>
+            <input
+                type="num"
+                class="form__input form-input--valid"
+                id="form__distance"
+                placeholder="км"
+            />
+        </div>
+
+        <div class="form__cell">
+            <label class="form__description">Час (хв)</label>
+            <input
+                type="num"
+                class="form__input form-input--valid"
+                id="form__duration"
+                placeholder="хв"
+            />
+        </div>
+
+        <!--Todo: Дві властивості, які переключаються в верхньому селекті -->
+        <div class="form__cell">
+            <label class="form__description">Темп</label>
+            <input
+                type="num"
+                class="form__input form-input--valid"
+                id="form__temp"
+                placeholder="крок/хв"
+            />
+        </div>
+
+        <div class="form__cell _hidden">
+            <label class="form__description">Висота (м)</label>
+            <input
+                type="num"
+                class="form__input form-input--valid"
+                id="form__climb"
+                placeholder="метри"
+            />
+        </div>
+    </form>
+
+    <!--Todo: Треніровки -->
+    <section class="workouts__items _remove-padding tab _active-tab"></section>
+    <section class="workouts__stats tab">
+        <div class="stats__row">
+            <h3 class="stats__label">Всього треніровок:</h3>
+            <p class="stats__value"><span class="value" id="quantity">0</span> <span class="unit">треніровок</span></з>
+        </div>
+
+        <div class="stats__row">
+            <h3 class="stats__label">Всього пробіжок:</h3>
+            <p class="stats__value"><span class="value" id="running-quantity">0</span> <span class="unit">пробіжка</span></p>
+        </div>
+        
+        <div class="stats__row">
+            <h3 class="stats__label">Всього велотреніровок:</h3>
+            <p class="stats__value"><span class="value" id="cycling-quantity">0</span> <span class="unit">велоїзда</span></p>
+        </div>
+        
+        <div class="stats__row">
+            <h3 class="stats__label">Загальна дистанція:</h3>
+            <p class="stats__value"><span class="value" id="distance">0</span> <span class="unit">км</span></p>
+        </div>
+        
+        <div class="stats__row">
+            <h3 class="stats__label">Загальна к-ть часу:</h3>
+            <p class="stats__value"><span class="value" id="duration">0</span> <span class="unit">хв</span></p>
+        </div>
+    </section>
+
+    <!--Todo: Повідомлення якщо ще немає треніровок -->
+    <h2 class="workouts__empty-message">У вас ще немає треніровок!</h2>
+</section>

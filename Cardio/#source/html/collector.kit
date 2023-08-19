@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ua">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cardio</title>
+        <link
+            rel="shortcut icon"
+            href="/img/app-logo.png"
+            type="image/x-icon"
+        />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="/css/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+        />
+
+        <!-- Scripts -->
+        <script
+            defer
+            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""
+        ></script>
+
+        <script defer src="/js/app.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="sidebar">
+                <button class="sidebar__status-switch-btn">
+                    <span class="_icon-arrow-left"></span>
+                </button>
+
+                <header class="header sidebar-el">
+                    <img
+                        src="/img/app-logo-text.png"
+                        alt="Cardio | Sport is life."
+                        class="header__logo"
+                    />
+                    <h2 class="header__text">
+                        Плануйте тренування кожен день!
+                    </h2>
+                </header>
+                <main class="main sidebar-el">
+                    <!-- @import 'workouts.html' -->
+                </main>
+
+                <!--Todo: Панель дій з треніровками -->
+                <section class="workouts__actions actions sidebar-el">
+                    <div class="actions__tabs">
+                        <button
+                            class="actions__tab _active-tab"
+                            data-tab=".workouts__items"
+                        >
+                            Треніровки
+                        </button>
+                        <button
+                            class="actions__tab"
+                            data-tab=".workouts__stats"
+                        >
+                            Статистика
+                        </button>
+                    </div>
+
+                    <div class="actions__btns">
+                        <button class="actions__btn actions__delete-all-btn">
+                            Видалити всі
+                        </button>
+                        <button
+                            class="actions__btn actions__sort-btn"
+                            title="Сортування"
+                        >
+                            <p class="label">Новіші</p>
+                            <span class="icon _icon-sort"></span>
+                        </button>
+                    </div>
+                </section>
+
+                <footer class="footer sidebar-el">
+                    <p class="footer__copy">&copy; All rights reserved. 2023</p>
+                    <p id="contact-tg">
+                        Contact:
+                        <a href="https://t.me/aa_tt_123" target="_blank"
+                            >@aa_tt_123</a
+                        >
+                    </p>
+                </footer>
+
+                <!--Todo: Інформація про треніровки з закритим сайдбаром -->
+                <div class="sidebar-info info _hidden">
+                    <span class="info__count count--running"
+                        >К-сь пробіжок : <span class="count">0</span></span
+                    >
+                    <span class="info__count count--cycling"
+                        >К-сь велотреніровок :
+                        <span class="count">0</span></span
+                    >
+                </div>
+            </div>
+
+            <div id="map" class="map"></div>
+
+            <div class="modal _hidden">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <p class="modal-text"></p>
+                    <button class="modal-btn">Перезапустити</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
