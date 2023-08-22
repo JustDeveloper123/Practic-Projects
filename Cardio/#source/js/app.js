@@ -15,7 +15,7 @@ class App {
     constructor() {
         //* Отримання місцезнаходження користувача
         this._getPosition();
-        //* Відображаємо інформацію про к-ть треніровок при закритому сайдбарі
+        //* Відображаємо інформацію про к-ть тренувань при закритому сайдбарі
         this._updateStats();
 
         //* Кнопка сайдбару
@@ -23,7 +23,7 @@ class App {
         //* Змінення типу форми
         inputType.addEventListener("change", this._switchType);
 
-        //* Видалення треніровки зі списку і на карті
+        //* Видалення тренування зі списку і на карті
         workoutsContainer.addEventListener(
             "click",
             this._deleteWorkout.bind(this)
@@ -33,18 +33,21 @@ class App {
             "click",
             this._moveToWorkout.bind(this)
         );
-        //* Видалення всіх треніровок
+        //* Видалення всіх тренувань
         btnActionsDeleteAll.addEventListener(
             "click",
             this._deleteAllWorkouts.bind(this)
         );
-        //* Сортування треніровок
+        //* Сортування тренувань
         btnActionsSort.addEventListener("click", this._sortWorkouts.bind(this));
         //* Переключання табів
         actionsTabsContainer.addEventListener("click", this._switchTabs);
 
         //* Події клавіатури на сторінці
         window.addEventListener("keydown", this._keyboardManager.bind(this));
+
+        // Стилі для мобілок і планштеів
+        this._mobileAndTabletStyles();
     }
 
     _getPosition() {
@@ -292,7 +295,7 @@ class App {
         if (workout.type === "running") typeTitle = "Пробіжка";
         if (workout.type === "cycling") typeTitle = "Велоїзда";
 
-        //Todo: Спільні дані для треніровок
+        //Todo: Спільні дані для тренувань
         let html = `<div class="workout__item item workout--${workout.type}" data-id="${workout.id}">
             <div class="item__delete-workout">
                 <span>&times;</span>
@@ -353,7 +356,7 @@ class App {
 
         workoutsContainer.insertAdjacentHTML("afterbegin", html);
 
-        //Todo: Оновляємо інформацію про додану треніровку, і також перевірка для того, щоб при завантаженні локальних даних треніровок, статистика оновилась лише один раз
+        //Todo: Оновляємо інформацію про додане тренування, і також перевірка для того, щоб при завантаженні локальних даних тренувань, статистика оновилась лише один раз
         if (updateStats) {
             this._updateStats();
         }
@@ -396,7 +399,7 @@ class App {
         //Todo: Видаляємо треніровку з массиву
         const workoutIndex = this.#workouts.indexOf(workout);
         this.#workouts.splice(workoutIndex, 1);
-        //Todo: Видаляємо треніровку з списку треніровок як HTML з анімацією
+        //Todo: Видаляємо треніровку з списку тренувань як HTML з анімацією
         workoutEl.classList.add("deleting-animation");
         workoutEl.addEventListener("animationend", () => {
             workoutEl.remove();
@@ -436,7 +439,7 @@ class App {
     _deleteAllWorkouts() {
         if (!this.#workouts.length) {
             eventManager._openModal({
-                text: "У вас немає треніровок.",
+                text: "У вас немає тренувань.",
             });
 
             return; //* Далі код не піде
@@ -461,7 +464,7 @@ class App {
         }.bind(this);
 
         eventManager._openModal({
-            text: "Ви впевнені? Ця дія видалить всі треніровки.",
+            text: "Ви впевнені? Ця дія видалить всі тренування.",
             btn: {
                 active: true,
                 text: "Видалити всі",
@@ -473,7 +476,7 @@ class App {
             },
         });
 
-        //* Скидаємо значення для рахунку операцій створення треніровок
+        //* Скидаємо значення для рахунку операцій створення тренувань
     }
 
     _sortWorkouts() {
@@ -555,7 +558,7 @@ class App {
 
     _getLocaleStorageData() {
         const workoutsData = JSON.parse(localStorage.getItem("workouts"));
-        //! Якщо undefined, тобто нема треніровок, то код нижче не виконається
+        //! Якщо undefined, тобто нема тренувань, то код нижче не виконається
         if (workoutsData) {
             this.#workouts = workoutsData;
 
@@ -648,6 +651,23 @@ class App {
         updateInfo(workoutsStatsCyclingQty, statsCyclingQty);
         updateInfo(workoutsStatsDistance, statsDistance);
         updateInfo(workoutsStatsDuration, statsDuration);
+    }
+
+    _mobileAndTabletStyles() {
+        const isMobileOrTablet =
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|Touch|Silk|Kindle|SymbianOS|Opera Mobi/i.test(
+                navigator.userAgent
+            );
+
+        if (isMobileOrTablet) {
+            btnMobileFormSubmit.classList.remove("_hidden");
+            eventManager._switchSidebar();
+        }
+
+        btnMobileFormSubmit.addEventListener(
+            "click",
+            this._createWorkout.bind(this)
+        );
     }
 }
 

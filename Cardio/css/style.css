@@ -886,6 +886,19 @@ html {
             box-shadow: none;
   }
 }
+.sidebar .main .workouts .workouts__form.form .form__submit {
+  grid-column-start: span 2;
+  padding: 5px 8px;
+  cursor: pointer;
+  background-color: rgb(134, 221, 224);
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 700;
+}
+.sidebar .main .workouts .workouts__form.form .form__submit._hidden {
+  display: none;
+}
 .sidebar .main .workouts .tab {
   pointer-events: none;
   max-height: 0;

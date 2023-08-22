@@ -80,7 +80,7 @@
             />
         </div>
 
-        <!--Todo: Дві властивості, які переключаються в верхньому селекті -->
+        <!--Todo: Дві властивості, які перемикаються в верхньому селекті -->
         <div class="form__cell">
             <label class="form__description">Темп</label>
             <input
@@ -100,14 +100,18 @@
                 placeholder="метри"
             />
         </div>
+
+        <button type="button" class="form__submit _hidden">
+            Створити
+        </button>
     </form>
 
-    <!--Todo: Треніровки -->
+    <!--Todo: Тренування -->
     <section class="workouts__items _remove-padding tab _active-tab"></section>
     <section class="workouts__stats tab">
         <div class="stats__row">
-            <h3 class="stats__label">Всього треніровок:</h3>
-            <p class="stats__value"><span class="value" id="quantity">0</span> <span class="unit">треніровок</span></з>
+            <h3 class="stats__label">Всього тренувань:</h3>
+            <p class="stats__value"><span class="value" id="quantity">0</span> <span class="unit">тренувань</span></з>
         </div>
 
         <div class="stats__row">
@@ -116,7 +120,7 @@
         </div>
         
         <div class="stats__row">
-            <h3 class="stats__label">Всього велотреніровок:</h3>
+            <h3 class="stats__label">Всього велотренувань:</h3>
             <p class="stats__value"><span class="value" id="cycling-quantity">0</span> <span class="unit">велоїзда</span></p>
         </div>
         
@@ -131,8 +135,8 @@
         </div>
     </section>
 
-    <!--Todo: Повідомлення якщо ще немає треніровок -->
-    <h2 class="workouts__empty-message">У вас ще немає треніровок!</h2>
+    <!--Todo: Повідомлення якщо ще немає тренувань -->
+    <h2 class="workouts__empty-message">У вас ще немає тренувань!</h2>
 </section>
                 </main>
 
@@ -143,7 +147,7 @@
                             class="actions__tab _active-tab"
                             data-tab=".workouts__items"
                         >
-                            Треніровки
+                            Тренування
                         </button>
                         <button
                             class="actions__tab"
@@ -177,14 +181,13 @@
                     </p>
                 </footer>
 
-                <!--Todo: Інформація про треніровки з закритим сайдбаром -->
+                <!--Todo: Інформація про тренування з закритим сайдбаром -->
                 <div class="sidebar-info info _hidden">
                     <span class="info__count count--running"
                         >К-сь пробіжок : <span class="count">0</span></span
                     >
                     <span class="info__count count--cycling"
-                        >К-сь велотреніровок :
-                        <span class="count">0</span></span
+                        >К-сь велотренувань : <span class="count">0</span></span
                     >
                 </div>
             </div>

@@ -46,6 +46,7 @@ const btnActionsDeleteAll = sidebar.querySelector(".actions__delete-all-btn");
 const btnActionsSort = sidebar.querySelector(".actions__sort-btn");
 const btnSidebarSwitch = sidebar.querySelector(".sidebar__status-switch-btn");
 const btnRemoveForm = workoutForm.querySelector("#remove-form-btn");
+const btnMobileFormSubmit = workoutForm.querySelector(".form__submit");
 
 const btnsDeleteWorkout = workoutsContainer.querySelector(
     ".item__delete-workout"

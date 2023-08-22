@@ -234,6 +234,22 @@
                 }
             }
         }
+
+        //Todo: Кнопка відправки для мобілок
+        .form__submit {
+            &._hidden {
+                display: none;
+            }
+
+            grid-column-start: span 2;
+            padding: 5px 8px;
+            cursor: pointer;
+            background-color: rgb(134, 221, 224);
+            color: $black;
+            font-size: 18px;
+            text-align: center;
+            font-weight: 700;
+        }
     }
 
     .tab {
